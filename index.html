@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correo Electrónico Copiable</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            padding: 15px;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .email-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .email {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .message {
+            margin-top: 15px;
+            color: #4CAF50;
+            font-weight: bold;
+            visibility: hidden;
+            height: 20px;
+        }
+        
+        .instruction {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Media queries para diferentes tamaños de pantalla */
+        @media screen and (min-width: 480px) {
+            .email-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .email {
+                flex: 1;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .instruction {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mi dirección de correo electrónico</h2>
+        <p class="instruction">Haz clic en el correo electrónico o en el botón para copiarlo</p>
+        
+        <div class="email-container">
+            <div class="email" id="email" onclick="copyEmail()">serviciomantenimientopcs@gmail.com</div>
+            <button class="copy-btn" onclick="copyEmail()">Copiar</button>
+        </div>
+        
+        <p class="message" id="message">¡Correo copiado al portapapeles!</p>
+    </div>
+
+    <script>
+        function copyEmail() {
+            // Obtener el texto del correo electrónico
+            const email = document.getElementById('email').textContent;
+            
+            // Intentar usar la API moderna del portapapeles
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email)
+                    .then(showSuccessMessage)
+                    .catch(fallbackCopyMethod);
+            } else {
+                // Método alternativo para navegadores que no soportan clipboard API
+                fallbackCopyMethod();
+            }
+        }
+        
+        function fallbackCopyMethod() {
+            // Crear un elemento temporal
+            const tempInput = document.createElement('input');
+            tempInput.value = document.getElementById('email').textContent;
+            document.body.appendChild(tempInput);
+            
+            // Seleccionar y copiar
+            tempInput.select();
+            document.execCommand('copy');
+            
+            // Eliminar el elemento temporal
+            document.body.removeChild(tempInput);
+            
+            // Mostrar mensaje de éxito
+            showSuccessMessage();
+        }
+        
+        function showSuccessMessage() {
+            const message = document.getElementById('message');
+            message.style.visibility = 'visible';
+            
+            // Ocultar mensaje después de 2 segundos
+            setTimeout(function() {
+                message.style.visibility = 'hidden';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
