@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,7 @@
         
         body {
             background-color: #041b2e;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                              url('https://img.pikbest.com/backgrounds/v3/20190917/technological-background-with-different-data-calculations-background_1554056.jpg!w700wp');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1611934786229-5021928944cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -188,26 +188,64 @@
         
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 42px;
             margin-bottom: 20px;
         }
         
         .calendar-btn {
-            background-color: #fff;
-            color: #041b2e;
+            background-color: #2a9df4;
+            color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 1px;
+            position: relative;
         }
         
         .calendar-btn img {
             width: 20px;
             height: 20px;
             margin-right: 10px;
+        }
+        
+        .calendar-btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .arrow-left,
+        .arrow-right {
+            color: #4db8ff;
+            font-size: 28px;
+            margin: 0 15px;
+            animation: pointing 1s infinite alternate;
+            transform: rotate(180deg);
+        }
+        
+        @keyframes pointing {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(5px);
+            }
+        }
+        
+        .arrow-left {
+            animation: pointing-left 1s infinite alternate;
+        }
+        
+        @keyframes pointing-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-5px);
+            }
         }
         
         .message {
@@ -222,8 +260,8 @@
             display: none;
             transition: all 0.3s ease;
         }
-        
         /* Hexagon decorations */
+        
         .hexagons {
             position: absolute;
             top: 0;
@@ -239,35 +277,31 @@
             .title {
                 font-size: 2rem;
             }
-            
             .subtitle {
                 font-size: 2.2rem;
             }
-            
             .banner {
                 font-size: 1.2rem;
             }
-            
-            .service-text, .contact-text {
+            .service-text,
+            .contact-text {
                 font-size: 1rem;
             }
-            
             .contact-item {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .contact-icon {
                 margin-right: 0;
                 margin-bottom: 10px;
             }
-            
             .contact-text {
                 margin-bottom: 10px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -283,9 +317,9 @@
             <div class="title">Servicio Técnico en</div>
             <div class="subtitle">Computadores</div>
         </div>
-        
+
         <div class="banner">¡Tu compu también merece una manito!</div>
-        
+
         <div class="services-list">
             <div class="service-item">
                 <div class="check-icon">✓</div>
@@ -308,7 +342,7 @@
                 <div class="service-text">Instalación de programas</div>
             </div>
         </div>
-        
+
         <div class="contact-container">
             <div class="contact-item" onclick="window.open('https://wa.me/573026926905', '_blank')">
                 <div class="contact-icon whatsapp-icon">
@@ -318,7 +352,7 @@
                 </div>
                 <div class="contact-text">WhatsApp: 3026926905</div>
             </div>
-            
+
             <div class="contact-item" onclick="copyToClipboard('serviciomantenimientopcs@gmail.com', 'email')">
                 <div class="contact-icon email-icon">
                     <svg viewBox="0 0 24 24" width="25" height="25">
@@ -328,7 +362,7 @@
                 <div class="contact-text">serviciomantenimientopcs@gmail.com</div>
                 <button class="copy-btn" onclick="event.stopPropagation(); copyToClipboard('serviciomantenimientopcs@gmail.com', 'email')">Copiar</button>
             </div>
-            
+
             <div class="contact-item">
                 <div class="contact-icon location-icon">
                     <svg viewBox="0 0 24 24" width="25" height="25">
@@ -338,50 +372,53 @@
                 <div class="contact-text">Sahagún - Córdoba</div>
             </div>
         </div>
-        
+
         <div class="footer">
-            <a href="https://wa.me/573026926905?text=Hola,%20me%20gustaría%20agendar%20un%20servicio%20técnico%20para%20mi%20computador" class="calendar-btn" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                    <path fill="#041b2e" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
-                </svg>
-                Agenda tu cupo
-            </a>
+            <div class="calendar-btn-container">
+                <div class="arrow-left">►</div>
+                <a href="https://wa.me/573026926905?text=Hola,%20me%20gustaría%20agendar%20un%20servicio%20técnico%20para%20mi%20computador" class="calendar-btn" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#FFFFFF" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                    </svg> Agenda tu cupo
+                </a>
+                <div class="arrow-right">◄</div>
+            </div>
         </div>
     </div>
-    
+
     <div class="message" id="copyMessage"></div>
-    
+
     <script>
         function copyToClipboard(text, type) {
             // Crear un elemento temporal
             const tempInput = document.createElement('input');
             tempInput.value = text;
             document.body.appendChild(tempInput);
-            
+
             // Seleccionar y copiar
             tempInput.select();
             document.execCommand('copy');
-            
+
             // Eliminar el elemento temporal
             document.body.removeChild(tempInput);
-            
+
             // Mostrar mensaje de confirmación
             const messageTypes = {
                 'whatsapp': 'Número de WhatsApp copiado al portapapeles',
                 'email': 'Correo electrónico copiado al portapapeles',
                 'ubicacion': 'Ubicación copiada al portapapeles'
             };
-            
+
             const message = document.getElementById('copyMessage');
             message.innerText = messageTypes[type] || 'Texto copiado al portapapeles';
             message.style.display = 'block';
-            
+
             // Ocultar después de 2 segundos
             setTimeout(function() {
                 message.style.display = 'none';
             }, 2000);
         }
-        
+
         // Método moderno alternativo (para navegadores modernos)
         async function copyToClipboardModern(text, type) {
             try {
@@ -391,11 +428,11 @@
                     'email': 'Correo electrónico copiado al portapapeles',
                     'ubicacion': 'Ubicación copiada al portapapeles'
                 };
-                
+
                 const message = document.getElementById('copyMessage');
                 message.innerText = messageTypes[type] || 'Texto copiado al portapapeles';
                 message.style.display = 'block';
-                
+
                 setTimeout(function() {
                     message.style.display = 'none';
                 }, 2000);
@@ -406,4 +443,5 @@
         }
     </script>
 </body>
+
 </html>
